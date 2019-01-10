@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<script type="text/javascript" src="js/jquery.min.js" ></script>
+<link href="css/common2013.css" type="text/css" rel="stylesheet"><!--返回顶部css修饰-->
+<!-- <script src="js/common2013.js"></script><!--返回顶部--> -->
+</head>
+<body>
+<style type="text/css">
+.div_i{
+	text-align:center;
+	height:25px;
+	line-height:25px;
+}
+</style>
+<script>
+$(function(){
+	var s="";
+	for(var i=0;i<=100;i++){
+		s+="<div class='div_i'>"+i+"</div>";
+	}
+	$(".main_div").append(s);
+
+	//返回顶部js代码
+	$.returnTop=function(node){
+		var node = $('<a href="#" alt="返回顶端" id="returnTop">返回顶端</a>');
+		$(document).ready(function(){$('body').append(node)});
+		var b = node.click(function(event){
+			event.preventDefault();
+			$("html,body").animate({scrollTop: 0},300);
+		}),
+		c = null;
+		$(window).bind("scroll",function(){
+		   var d = $(document).scrollTop(),
+		   e = $(window).height();
+		   0 < d ? b.css("bottom", "10px") : b.css("bottom", "-200px");
+		   isIE6() && (b.hide(),clearTimeout(c),c = setTimeout(function(){
+				0 < d ? b.show() : b.hide();
+				clearTimeout(c);
+			},
+			300), b.css("top", d + e - 51))
+		});
+	}
+});	
+</script>
+
+<div class="main_div"></div>
+
+<!--返回顶部-->
+<script>
+$(function() {
+	$.returnTop();
+});
+</script>
+<!--返回顶部 End-->
+<a href="citywide.html" alt="返回顶端" id="returnTop" style="bottom: -200px;">返回顶端</a>
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+.me-search { 
+	text-align: center;
+}
+.me-search input,.me-search select{
+	display: inline;
+}
